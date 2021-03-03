@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Drawing App - Uni Wien</string>
+    <string name="triangle">triangle</string>
+    <string name="circle">circle</string>
+    <string name="rec">rec</string>
+    <string name="tri">tri</string>
+    <string name="cir">cir</string>
+    <string name="line">line</string>
+    <string name="text">text</string>
+    <string name="title_activity_drawing">DrawingActivity</string>
+</resources>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DrawingActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/projectNameBanner"
+        app:contentInsetStart="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/topDrawToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/primary_light">
+
+        <Button
+            android:id="@+id/project_name"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:text="Project Name"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topDrawToolbar"
+        app:contentInsetStart="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/canvasDrawView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/projectNameBanner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/secondary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/drawing_activity_menu_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".8"
+                android:background="#00FFFFFF"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:src="@drawable/ic_baseline_save_24"
+                android:tint="@color/primary_light" />
+
+            <ImageButton
+                android:id="@+id/layer_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:backgroundTint="#00FFFFFF"
+                android:paddingStart="18dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="8dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/ic_layer_icon" />
+
+            <ImageButton
+                android:id="@+id/color_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/color_icon" />
+
+            <ImageButton
+                android:id="@+id/fontsiize_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:padding="12dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/ic_font_size_icon" />
+
+            <ImageButton
+                android:id="@+id/stroke_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:padding="12dp"
+                android:scaleX=".8"
+                android:scaleY=".8"
+                android:src="@drawable/ic_stroke_icon" />
+
+            <ImageButton
+                android:id="@+id/width_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:padding="12dp"
+                android:src="@drawable/ic_width_icon" />
+
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/group_enable_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topDrawToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_groups_disabled"
+        android:translationZ="2dp"
+        android:visibility="visible">
+
+
+    </ImageButton>
+
+    <LinearLayout
+        android:id="@+id/group_btn_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topDrawToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:paddingStart="10dp"
+        android:translationZ="2dp"
+        android:visibility="gone">
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/group_new_group_btn"
+                app:backgroundTint="@color/accent_light"
+                app:fabCustomSize="45dp"
+                app:fabSize="normal"
+                app:maxImageSize="25dp"
+                app:srcCompat="@drawable/ic_new_group"
+                app:tint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/group_add_sketch_btn"
+                app:backgroundTint="@color/accent_light"
+                app:fabCustomSize="45dp"
+                app:fabSize="normal"
+
+                app:maxImageSize="25dp"
+                app:srcCompat="@drawable/ic_group_add_sketch"
+                app:tint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/group_remove_sketch_btn"
+                app:backgroundTint="@color/accent_light"
+                app:fabCustomSize="45dp"
+                app:fabSize="normal"
+                app:maxImageSize="20dp"
+                app:srcCompat="@drawable/ic_group_rm_sketch"
+                app:tint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/group_duplicate_btn"
+                app:backgroundTint="@color/accent_light"
+                app:fabCustomSize="45dp"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/ic_group_duplicate"
+                app:tint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+
+        </FrameLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/group_disable_btn"
+            app:fabCustomSize="50dp"
+            app:fabSize="normal"
+            app:maxImageSize="40dp"
+            app:srcCompat="@drawable/ic_groups_enabled_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true" />
+
+
+    </LinearLayout>
+
+    <com.example.inkscapemobile.activities.DrawView
+        android:id="@+id/canvasDrawView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomDrawToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topDrawToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bottomDrawToolbar"
+        app:contentInsetStart="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/secondary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/remove_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_remove_sketch" />
+
+
+            <ImageButton
+                android:id="@+id/insert_text_sketch_btn"
+                style="@android:style/Widget.DeviceDefault.ImageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_insert_text_sketch" />
+
+            <ImageButton
+                android:id="@+id/insert_hand_drawing_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:scaleType="center"
+                android:src="@drawable/ic_insert_hand_drawing_sketch" />
+
+            <ImageButton
+                android:id="@+id/insert_line_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:scaleType="center"
+                android:src="@drawable/ic_insert_line_sketch" />
+
+            <ImageButton
+                android:id="@+id/insert_circle_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+
+                android:backgroundTintMode="add"
+                android:scaleType="center"
+                android:src="@drawable/ic_insert_circle_sketch" />
+
+            <ImageButton
+                android:id="@+id/insert_triangle_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:padding="6dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_insert_triangle_sketch" />
+
+            <ImageButton
+                android:id="@+id/insert_rectangle_sketch_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:backgroundTintMode="add"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_insert_rectangle_sketch" />
+
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
